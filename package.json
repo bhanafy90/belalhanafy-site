@@ -5,8 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "python3 -m http.server 4321 --bind 127.0.0.1 --directory out",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "assets": "node scripts/prep-assets.mjs",
+    "check:privacy": "node scripts/check-privacy.mjs",
+    "check:responsive": "node scripts/check-responsive.mjs"
   },
   "dependencies": {
     "next": "16.2.12",
