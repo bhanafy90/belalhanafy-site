@@ -1,9 +1,12 @@
 import sharp from 'sharp';
 import { mkdir, copyFile, stat } from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const SRC = '/Users/bhanafy/Documents/Work/Projects (AI)/Personal website ';
-const OUT = '/Users/bhanafy/Documents/belalhanafy-site/public';
+// Derived from this script's own location rather than hardcoded, so moving
+// the project folder doesn't silently break asset generation.
+const OUT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'public');
 
 const jobs = [
   {
