@@ -1,0 +1,9 @@
+{
+  "cleanUrls": false,
+  "headers": [
+    {
+      "source": "/embeds/prelive.jmp",
+      "headers": [{ "key": "Content-Type", "value": "text/html; charset=utf-8" }]
+    }
+  ]
+}

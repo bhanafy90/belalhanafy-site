@@ -86,11 +86,15 @@ for (const job of jobs) {
 
 // PRELIVE interactive tool — copied byte-for-byte, never reformatted.
 // Lives under /embeds rather than /tools/prelive/, because the Next route of
-// that name emits its own index.html there and the two would collide.
+// that name emits its own index.html there and the two would collide. Named
+// .jmp rather than .html because Vercel's Next.js static-export builder
+// resolves any .html-suffixed request against Next's own page manifest and
+// 404s anything that isn't a real page, even a literal static file on disk;
+// vercel.json sets the Content-Type header back to text/html for this path.
 const toolDir = path.join(OUT, 'embeds');
 await mkdir(toolDir, { recursive: true });
 const toolSrc = path.join(SRC, 'adfm73162-sup-0002-suppmat.html');
-const toolDst = path.join(toolDir, 'prelive.html');
+const toolDst = path.join(toolDir, 'prelive.jmp');
 await copyFile(toolSrc, toolDst);
 const a = await stat(toolSrc);
 const b = await stat(toolDst);

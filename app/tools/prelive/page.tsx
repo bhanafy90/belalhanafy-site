@@ -41,7 +41,7 @@ export default function PrelivePage() {
       <div className="mx-auto max-w-[1480px] px-5 pb-6 sm:px-8">
         <div className="overflow-hidden rounded-xl border border-line bg-white">
           <iframe
-            src="/embeds/prelive.html"
+            src="/embeds/prelive.jmp"
             title="PRELIVE interactive profiler: predicted in-vivo functional delivery of lipid nanoparticles across eight tissues"
             loading="lazy"
             className="block h-[620px] w-full sm:h-[660px]"
@@ -51,7 +51,7 @@ export default function PrelivePage() {
         <p className="mt-4 text-sm text-muted">
           Cramped on a small screen?{" "}
           <a
-            href="/embeds/prelive.html"
+            href="/embeds/prelive.jmp"
             target="_blank"
             rel="noopener noreferrer"
             className="link-underline text-accent-2"
