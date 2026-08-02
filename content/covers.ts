@@ -28,7 +28,7 @@ export const covers: Cover[] = [
     coverDoi: "10.1002/adhm.202570107",
     alt: "Advanced Healthcare Materials front cover: a three-dimensional rendering of lipid nanoparticles of different lipid compositions, shown in pink, blue, green and lilac, approaching and fusing with undulating cell membranes. One nanoparticle is cut away to reveal strands of messenger RNA held inside.",
     caption:
-      "Lipid nanoparticles meeting cell membranes, with one cut away to show the mRNA cargo inside. The differing colours stand for differing lipid compositions — the variable that decides which cell type a particle ends up in, and the subject of the paper.",
+      "Lipid nanoparticles meeting cell membranes, with one cut away to show the mRNA cargo inside. The colours stand for different lipid compositions, the variable this paper studies.",
   },
   {
     id: "jcr",
@@ -41,6 +41,6 @@ export const covers: Cover[] = [
     publication: "jcr-mabs",
     alt: "Journal of Controlled Release inside front cover: a circular diagram in coral and pale green showing a monoclonal antibody injected subcutaneously, with a release profile curve above and a transmission profile curve below, converging on a human figure receiving an injection.",
     caption:
-      "The two measurements the model combines — how the antibody is released from the injection site, and how it transmits into the circulation — resolved into a single prediction of human subcutaneous bioavailability.",
+      "The two measurements the model combines: how the antibody is released from the injection site, and how it transmits into the circulation.",
   },
 ];

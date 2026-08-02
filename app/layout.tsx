@@ -23,8 +23,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name}, ${site.credential} — ${site.tagline}`,
-    template: `%s — ${site.name}`,
+    default: `${site.name}, ${site.credential} · ${site.tagline}`,
+    template: `%s · ${site.name}`,
   },
   description: site.description,
   authors: [{ name: site.fullName, url: site.url }],
@@ -47,14 +47,14 @@ export const metadata: Metadata = {
     type: "website",
     siteName: site.name,
     url: site.url,
-    title: `${site.name}, ${site.credential} — ${site.tagline}`,
+    title: `${site.name}, ${site.credential} · ${site.tagline}`,
     description: site.description,
     images: [{ url: "/og.png", width: 1200, height: 630, alt: site.tagline }],
     locale: "en_GB",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name}, ${site.credential} — ${site.tagline}`,
+    title: `${site.name}, ${site.credential} · ${site.tagline}`,
     description: site.description,
     images: ["/og.png"],
   },
@@ -92,9 +92,7 @@ const personJsonLd = {
     "Subcutaneous drug delivery",
     "Reduction of animal testing",
   ],
-  sameAs: [links.orcid, links.linkedin, links.github, links.scholar].filter(
-    Boolean,
-  ),
+  sameAs: [links.orcid, links.linkedin, links.scholar].filter(Boolean),
 };
 
 const publicationsJsonLd = publications.map((p) => ({

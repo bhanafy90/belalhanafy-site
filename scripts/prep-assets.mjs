@@ -26,27 +26,61 @@ const jobs = [
     name: 'belal-hanafy',
     widths: [400, 610],
   },
+  {
+    // DoE / SVEM figure from the PRELIVE paper, illustrating the composition
+    // -> model -> in-vivo prediction pipeline.
+    src: path.join(SRC, 'research-prelive.jpg'),
+    dir: 'research',
+    name: 'prelive-figure',
+    widths: [480, 768, 1200],
+  },
+  {
+    // SCISSOR release/transmission profile -> SVEM bioavailability figure
+    // from the JCR mAbs paper.
+    src: path.join(SRC, 'research-biopharm.png'),
+    dir: 'research',
+    name: 'biopharm-figure',
+    widths: [480, 768, 1200],
+  },
+  {
+    // Cell-type Venn diagram from the AHM tropism paper.
+    src: path.join(SRC, 'research-tropism.png'),
+    dir: 'research',
+    name: 'tropism-figure',
+    widths: [480, 768, 1200],
+  },
 ];
 
 for (const job of jobs) {
-  const outDir = path.join(OUT, job.dir);
-  await mkdir(outDir, { recursive: true });
-  const meta = await sharp(job.src).metadata();
-  console.log(`\n${job.name}  source ${meta.width}x${meta.height}`);
+  try {
+    const outDir = path.join(OUT, job.dir);
+    await mkdir(outDir, { recursive: true });
+    const meta = await sharp(job.src).metadata();
+    console.log(`\n${job.name}  source ${meta.width}x${meta.height}`);
 
-  for (const w of job.widths) {
-    const base = sharp(job.src).resize({ width: w, withoutEnlargement: true });
-    const targets = [
-      ['avif', base.clone().avif({ quality: 55, effort: 6 })],
-      ['webp', base.clone().webp({ quality: 78 })],
-      ['jpg', base.clone().jpeg({ quality: 82, mozjpeg: true })],
-    ];
-    for (const [ext, pipeline] of targets) {
-      const file = path.join(outDir, `${job.name}-${w}.${ext}`);
-      await pipeline.toFile(file);
-      const { size } = await stat(file);
-      console.log(`  ${job.name}-${w}.${ext.padEnd(4)} ${(size / 1024).toFixed(0).padStart(5)} KB`);
+    for (const w of job.widths) {
+      const base = sharp(job.src).resize({ width: w, withoutEnlargement: true });
+      const targets = [
+        ['avif', base.clone().avif({ quality: 55, effort: 6 })],
+        ['webp', base.clone().webp({ quality: 78 })],
+        [
+          'jpg',
+          base
+            .clone()
+            .flatten({ background: '#ffffff' }) // no-op on already-opaque sources; keeps RGBA figures off a black jpg fallback
+            .jpeg({ quality: 82, mozjpeg: true }),
+        ],
+      ];
+      for (const [ext, pipeline] of targets) {
+        const file = path.join(outDir, `${job.name}-${w}.${ext}`);
+        await pipeline.toFile(file);
+        const { size } = await stat(file);
+        console.log(`  ${job.name}-${w}.${ext.padEnd(4)} ${(size / 1024).toFixed(0).padStart(5)} KB`);
+      }
     }
+  } catch (err) {
+    // One missing source (e.g. a renamed file) shouldn't block every other job.
+    console.error(`\n${job.name}  SKIPPED: ${err.message}`);
   }
 }
 

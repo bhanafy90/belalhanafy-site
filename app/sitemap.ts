@@ -7,7 +7,6 @@ const routes = [
   { path: "/publications/", priority: 0.9 },
   { path: "/tools/", priority: 0.9 },
   { path: "/tools/prelive/", priority: 0.8 },
-  { path: "/cover-art/", priority: 0.7 },
   { path: "/about/", priority: 0.7 },
 ];
 

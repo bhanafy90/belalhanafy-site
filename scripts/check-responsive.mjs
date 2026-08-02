@@ -23,7 +23,6 @@ const ROUTES = [
   "/publications/",
   "/tools/",
   "/tools/prelive/",
-  "/cover-art/",
   "/about/",
 ];
 const WIDTHS = [375, 768, 1440];

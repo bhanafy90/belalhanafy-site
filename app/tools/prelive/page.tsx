@@ -31,7 +31,7 @@ export default function PrelivePage() {
         <p className="mt-5 max-w-2xl leading-relaxed text-muted">
           Drag any input to change a lipid nanoparticle&rsquo;s composition or
           size. The predicted functional mRNA delivery updates immediately, and
-          the tabs switch between eight tissues. Nothing is sent anywhere — the
+          the tabs switch between eight tissues. Nothing is sent anywhere: the
           model runs entirely in your browser.
         </p>
       </Section>

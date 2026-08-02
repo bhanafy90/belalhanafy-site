@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { PublicationHighlights } from "@/components/PublicationHighlights";
 import { PublicationList } from "@/components/PublicationList";
-import { PageHeader, Section } from "@/components/ui";
+import { Eyebrow, PageHeader, Section } from "@/components/ui";
 import { links, orcidId } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -15,12 +16,17 @@ export default function PublicationsPage() {
     <>
       <PageHeader
         eyebrow="Publications"
-        title="Nine papers, five as first author."
-        lede="Peer-reviewed work spanning lipid nanoparticle delivery, predictive biopharmaceutics and, earlier, nanoceria and oxidative stress. Every entry links to its DOI."
+        title="Publications."
+        lede="Nine peer-reviewed papers on lipid nanoparticle delivery, predictive biopharmaceutics and machine learning for formulation. Every entry links to its DOI."
       />
 
       <Section className="pb-24">
-        <div className="mb-10 rounded-lg border border-line bg-surface/50 p-5 text-sm leading-relaxed text-muted">
+        <Eyebrow>Highlights</Eyebrow>
+        <div className="mt-4">
+          <PublicationHighlights />
+        </div>
+
+        <div className="mt-16 mb-10 rounded-lg border border-line bg-surface/50 p-5 text-sm leading-relaxed text-muted">
           This list is maintained by hand. The authoritative, always-current
           record is my{" "}
           <a

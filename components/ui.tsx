@@ -17,9 +17,22 @@ export function Section({
   );
 }
 
-export function Eyebrow({ children }: { children: ReactNode }) {
+const eyebrowSizes = {
+  sm: "text-xs",
+  md: "text-sm sm:text-base",
+} as const;
+
+export function Eyebrow({
+  children,
+  size = "sm",
+}: {
+  children: ReactNode;
+  size?: keyof typeof eyebrowSizes;
+}) {
   return (
-    <p className="text-xs font-semibold tracking-[0.16em] text-accent-2 uppercase">
+    <p
+      className={`${eyebrowSizes[size]} font-semibold tracking-[0.16em] text-accent-2 uppercase`}
+    >
       {children}
     </p>
   );

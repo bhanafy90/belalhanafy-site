@@ -97,7 +97,7 @@ export const publications: Publication[] = [
     firstAuthor: true,
     cover: "inside-front",
     themes: ["biopharm", "doe-ml"],
-    note: "Predicts how much of a subcutaneously injected antibody reaches the bloodstream in humans, at above 85% accuracy — better than the prevailing industry standard.",
+    note: "Predicts how much of a subcutaneously injected antibody reaches the bloodstream in humans, at above 85% accuracy, ahead of the prevailing industry standard.",
   },
   {
     id: "rsc-pharm-ecm",

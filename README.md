@@ -120,7 +120,9 @@ curl -sI https://www.belalhanafy.com | grep -i location
 
 ## Measured at build time
 
-Lighthouse, desktop preset, against the static output:
+Lighthouse, desktop preset, against the static output. Measured before the
+cover-art page was folded into Publications; worth re-running after that
+change.
 
 | Route | Perf | A11y | Best practices | SEO |
 |---|---|---|---|---|
@@ -128,7 +130,6 @@ Lighthouse, desktop preset, against the static output:
 | `/research/` | 99 | 100 | 100 | 100 |
 | `/publications/` | 99 | 100 | 100 | 100 |
 | `/tools/` | 98 | 100 | 100 | 100 |
-| `/cover-art/` | 96 | 100 | 100 | 100 |
 | `/about/` | 99 | 100 | 100 | 100 |
 | `/tools/prelive/` | 80 | 100 | 78 | 100 |
 

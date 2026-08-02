@@ -25,7 +25,7 @@ export function Nav() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <Link
           href="/"
-          className="font-display text-lg tracking-tight text-text hover:text-accent"
+          className="font-display text-xl tracking-tight text-text hover:text-accent sm:text-2xl"
         >
           {site.name}
           <span className="text-muted"> · {site.credential}</span>
@@ -33,21 +33,31 @@ export function Nav() {
 
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex items-center gap-7 text-sm">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  aria-current={isActive(item.href) ? "page" : undefined}
-                  className={
-                    isActive(item.href)
-                      ? "text-accent"
-                      : "text-muted transition-colors hover:text-text"
-                  }
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {nav.map((item) => {
+              const className = isActive(item.href)
+                ? "text-accent"
+                : "text-muted transition-colors hover:text-text";
+              // Fragment-only links (e.g. "#contact") need a plain <a>: next/link
+              // intercepts the click for client-side routing and skips the
+              // browser's native scroll-to-hash on a same-page fragment.
+              return (
+                <li key={item.href}>
+                  {item.href.startsWith("#") ? (
+                    <a href={item.href} className={className}>
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      aria-current={isActive(item.href) ? "page" : undefined}
+                      className={className}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
@@ -86,19 +96,33 @@ export function Nav() {
           className="border-t border-line/60 md:hidden"
         >
           <ul className="mx-auto max-w-6xl px-5 py-2 sm:px-8">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  aria-current={isActive(item.href) ? "page" : undefined}
-                  className={`block border-b border-line/40 py-3 text-base last:border-0 ${
-                    isActive(item.href) ? "text-accent" : "text-muted"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {nav.map((item) => {
+              const className = `block border-b border-line/40 py-3 text-base last:border-0 ${
+                isActive(item.href) ? "text-accent" : "text-muted"
+              }`;
+              return (
+                <li key={item.href}>
+                  {item.href.startsWith("#") ? (
+                    <a
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className={className}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      aria-current={isActive(item.href) ? "page" : undefined}
+                      className={className}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </nav>
       )}

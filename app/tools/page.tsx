@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 
 const predictors = [
   ["Ionisable lipid", "% mol, plus a choice of five ionisable lipid chemistries"],
-  ["DSPC", "% mol — the helper phospholipid"],
+  ["DSPC", "% mol, the helper phospholipid"],
   ["Cholesterol", "% mol"],
-  ["DMG-PEG", "% mol — the PEGylated lipid controlling circulation"],
+  ["DMG-PEG", "% mol, the PEGylated lipid controlling circulation"],
   ["Particle size", "nm, measured by dynamic light scattering"],
 ];
 
@@ -37,8 +37,8 @@ export default function ToolsPage() {
     <>
       <PageHeader
         eyebrow="Tools"
-        title="A published model you can actually turn the dials on."
-        lede="Papers describe models. This one ships with its model attached — so you can change a formulation and watch the prediction move, without installing anything."
+        title="A published model you can turn the dials on."
+        lede="Papers describe models. This one ships with its model attached, so you can change a formulation and watch the prediction move, without installing anything."
       />
 
       <Section className="pb-24">
@@ -88,8 +88,8 @@ export default function ToolsPage() {
                   What it predicts
                 </h3>
                 <p className="mt-4 text-sm leading-relaxed text-muted">
-                  Functional mRNA delivery — reported as log radiance from a
-                  luciferase reporter — in each of eight compartments:
+                  Functional mRNA delivery, reported as log radiance from a
+                  luciferase reporter, in each of eight compartments:
                 </p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {tissues.map((t) => (
@@ -126,7 +126,7 @@ export default function ToolsPage() {
             </p>
             <p className="mt-3 text-sm leading-relaxed text-muted">
               A steep trace means the prediction is sensitive to that input. A
-              flat one means it barely matters — which is often the more useful
+              flat one means it barely matters, which is often the more useful
               finding.
             </p>
           </div>

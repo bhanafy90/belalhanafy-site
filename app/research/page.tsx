@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Picture } from "@/components/Picture";
 import { PageHeader, Section } from "@/components/ui";
 import { researchThemes } from "@/content/research";
 import { doiUrl, publications } from "@/content/publications";
@@ -7,7 +8,7 @@ import { doiUrl, publications } from "@/content/publications";
 export const metadata: Metadata = {
   title: "Research",
   description:
-    "Four themes: reducing reliance on animal testing, lipid nanoparticle organ and cell tropism, predictive biopharmaceutics, and Design of Experiments and machine learning for formulation.",
+    "Four themes: reducing reliance on animal testing, lipid nanoparticle organ and cell tropism, predictive biopharmaceutics, and cheminformatics, high-throughput screening and machine learning for formulation.",
   alternates: { canonical: "/research/" },
 };
 
@@ -22,12 +23,12 @@ export default function ResearchPage() {
     <>
       <PageHeader
         eyebrow="Research"
-        title="Predicting what an experiment would have told you."
-        lede="Four strands of work, all of them versions of the same question: how much can be known about a formulation before it is made?"
+        title="Formulation optimisation for drug delivery."
+        lede="Four areas I work in: reducing animal testing, lipid nanoparticle tropism, predictive biopharmaceutics, and cheminformatics with high-throughput screening."
       />
 
       <Section className="pb-24">
-        <ol className="space-y-20">
+        <ol className="space-y-16">
           {researchThemes.map((theme, i) => {
             const evidence = theme.evidence
               .map((id) => publications.find((p) => p.id === id))
@@ -35,58 +36,72 @@ export default function ResearchPage() {
 
             return (
               <li key={theme.id} id={theme.id} className="reveal scroll-mt-24">
-                <article className="grid gap-8 lg:grid-cols-12">
-                  <div className="lg:col-span-4">
+                <article className="max-w-3xl">
+                  <div className="flex items-center gap-4">
                     <span
                       className={`block h-1 w-12 ${accentBar[theme.accent]}`}
                     />
-                    <p className="mt-5 font-mono text-xs text-muted">
+                    <p className="font-mono text-xs text-muted">
                       {String(i + 1).padStart(2, "0")}
                     </p>
-                    <h2 className="mt-2 text-2xl leading-tight sm:text-3xl">
-                      {theme.title}
-                    </h2>
+                  </div>
+                  <h2 className="mt-4 text-2xl leading-tight sm:text-3xl">
+                    {theme.title}
+                  </h2>
+
+                  <p className="mt-5 font-display text-xl leading-relaxed text-sand">
+                    {theme.lede}
+                  </p>
+                  <div className="mt-5 space-y-4">
+                    {theme.body.map((para) => (
+                      <p key={para} className="leading-relaxed text-muted">
+                        {para}
+                      </p>
+                    ))}
                   </div>
 
-                  <div className="lg:col-span-8">
-                    <p className="font-display text-xl leading-relaxed text-sand">
-                      {theme.lede}
-                    </p>
-                    <div className="mt-6 space-y-4">
-                      {theme.body.map((para) => (
-                        <p key={para} className="leading-relaxed text-muted">
-                          {para}
-                        </p>
-                      ))}
+                  {theme.figure && (
+                    <div className="mt-8">
+                      <Picture
+                        base={theme.figure.image}
+                        widths={theme.figure.widths}
+                        intrinsic={theme.figure.intrinsic}
+                        alt={theme.figure.alt}
+                        sizes="(min-width: 1024px) 700px, 100vw"
+                        className="w-full rounded-lg shadow-xl ring-1 shadow-black/40 ring-white/10"
+                      />
+                      <p className="mt-3 text-xs leading-relaxed text-muted">
+                        {theme.figure.caption}
+                      </p>
                     </div>
+                  )}
 
-                    {evidence.length > 0 && (
-                      <div className="mt-8 rounded-lg border border-line bg-surface/50 p-5">
-                        <h3 className="text-xs font-semibold tracking-[0.14em] text-muted uppercase">
-                          Published evidence
-                        </h3>
-                        <ul className="mt-3 space-y-2.5">
-                          {evidence.map((p) => (
-                            <li key={p.id} className="text-sm leading-snug">
-                              <a
-                                href={doiUrl(p.doi)}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-text transition-colors hover:text-accent"
-                              >
-                                {p.title}
-                              </a>
-                              <span className="text-muted">
-                                {" "}
-                                — <span className="italic">{p.journal}</span>,{" "}
-                                {p.year}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
+                  {evidence.length > 0 && (
+                    <div className="mt-8 rounded-lg border border-line bg-surface/50 p-5">
+                      <h3 className="text-xs font-semibold tracking-[0.14em] text-muted uppercase">
+                        Published evidence
+                      </h3>
+                      <ul className="mt-3 space-y-2.5">
+                        {evidence.map((p) => (
+                          <li key={p.id} className="text-sm leading-snug">
+                            <a
+                              href={doiUrl(p.doi)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-text transition-colors hover:text-accent"
+                            >
+                              {p.title}
+                            </a>
+                            <span className="text-muted">
+                              {" "}
+                              · <span className="italic">{p.journal}</span>,{" "}
+                              {p.year}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </article>
               </li>
             );
