@@ -98,8 +98,9 @@ export default function AboutPage() {
           <h2 className="text-2xl">Contact and records</h2>
           <p className="mt-4 max-w-2xl leading-relaxed text-muted">
             The most complete and current record of my publications is my
-            ORCID profile. For a collaboration, a talk, or a question about
-            the work here, email is best.
+            ORCID profile. For a collaboration, a talk, a Design of
+            Experiments or formulation design problem you would like a second
+            opinion on, or a question about the work here, email is best.
           </p>
 
           <dl className="mt-8 grid gap-6 sm:grid-cols-3">

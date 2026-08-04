@@ -19,14 +19,14 @@ export const emailParts = { user: "bhanafy90", domain: "gmail.com" } as const;
 export const links = {
   orcid: "https://orcid.org/0000-0001-5356-8458",
   linkedin: "https://www.linkedin.com/in/belalhanafy/",
-  // TODO: awaiting Google Scholar profile URL from Belal.
-  scholar: null as string | null,
+  scholar: "https://scholar.google.com/citations?user=7Q3KRQwAAAAJ&hl=en" as string | null,
 } as const;
 
 export const orcidId = "0000-0001-5356-8458";
 
 export const nav = [
   { href: "/research/", label: "Research" },
+  { href: "/writing/", label: "Writing" },
   { href: "/publications/", label: "Publications" },
   { href: "/tools/", label: "Tools" },
   { href: "/about/", label: "About" },

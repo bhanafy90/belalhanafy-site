@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
@@ -41,6 +42,8 @@ export const metadata: Metadata = {
     "monoclonal antibodies",
     "mRNA delivery",
     "reducing animal testing",
+    "applied statistics",
+    "formulation design",
   ],
   alternates: { canonical: "/" },
   openGraph: {
@@ -91,6 +94,8 @@ const personJsonLd = {
     "Biopharmaceutics",
     "Subcutaneous drug delivery",
     "Reduction of animal testing",
+    "Applied statistics",
+    "Formulation design",
   ],
   sameAs: [links.orcid, links.linkedin, links.scholar].filter(Boolean),
 };
@@ -126,6 +131,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <Reveal />
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

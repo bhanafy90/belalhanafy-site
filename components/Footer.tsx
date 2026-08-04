@@ -48,8 +48,9 @@ export function Footer() {
             <h2 className="font-display text-2xl">Get in touch</h2>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">
               I am always glad to hear from people working on predictive
-              methods in drug delivery: collaborations, talks, or a question
-              about any of the work here.
+              methods in drug delivery: collaborations, talks, a Design of
+              Experiments or formulation problem you are stuck on, or a
+              question about any of the work here.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
