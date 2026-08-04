@@ -32,10 +32,6 @@ export const writingPosts: WritingPost[] = [
         type: "p",
         text: "Lipid nanoparticle development has traditionally run on a make-dose-measure loop: formulate a composition, inject it, image where it ended up, then change one thing and repeat. Within a defined applicability domain, that loop can now be replaced with a model. Change the ionisable lipid content, the helper phospholipid, the cholesterol, the PEG-lipid, or the particle size, and watch the predicted in-vivo delivery move, across eight tissues, in real time, in a browser.",
       },
-      {
-        type: "p",
-        text: "That model is PRELIVE, and it now runs as a live profiler on this site. This post is about the part that doesn't fit in a figure legend: why fourteen formulations were enough, what the profiler is actually showing you, and why an interactive model is a different kind of output to a paper, not just a nicer one.",
-      },
       { type: "h2", text: "Why fourteen formulations, not one at a time" },
       {
         type: "p",
@@ -55,7 +51,6 @@ export const writingPosts: WritingPost[] = [
         items: [
           "A steep trace means the prediction is sensitive to that input in that tissue.",
           "A flat trace means it barely matters there, which is often the more useful finding.",
-          "Switching the tissue tab keeps your composition fixed, so you can see the same formulation's predicted fate move from liver to spleen to lung.",
         ],
       },
       { type: "h2", text: "Why interactive, not just published" },

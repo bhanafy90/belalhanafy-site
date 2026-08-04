@@ -24,7 +24,6 @@ export default function WritingPage() {
       <PageHeader
         eyebrow="Writing"
         title="Notes on DoE, predictive modelling and formulation."
-        lede="Longer-form pieces on the methods behind the Research and Tools pages, and how they apply beyond the papers they came from."
       />
 
       <Section className="pb-24">
